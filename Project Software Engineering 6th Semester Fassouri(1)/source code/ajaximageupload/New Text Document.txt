@@ -1,0 +1,26 @@
+report//meta to div tou name 242
+
+<div class="adi4gj1743oo0-0" nowrap="true" style="z-index:25;top:193px;left:612px;width:119px;height:104px;">
+<img src="../ajaximageupload/uploads/<?php echo $photo; ?>" height="100%" width="100%">
+</div>
+
+
+//end
+
+
+//
+
+ photo($lastInsertId);
+
+
+
+
+
+
+
+ photo($lastInsertId);
+
+$general_details = "UPDATE employee_details SET employee_employee_id=$lastInsertId,address=$address,town=$town,telephone=$telephone,
+		date_of_birth=$birth_date,place_of_birth=$birth_place,SIN=$sin,
+		id_card=$idnum,hire_date=$hire_date WHERE employee_employee_id='$lastInsertId'";
+	

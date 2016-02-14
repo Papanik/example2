@@ -1,0 +1,227 @@
+$green: #27ae60;
+$dark-green: #16a085;
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+
+#logoFas
+{
+	background-image: url('Fasuri.png');
+	background-repeat:no-repeat;
+	background-size: 100%;
+    margin: auto;
+	width: 280px;
+	height: 150px;
+	
+}
+
+html, body {
+  margin: -10px;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  }
+
+body {
+  padding: 5em 1em;
+ text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 20px;
+  }
+ #lezanta{
+
+    text-align: left;
+  }
+  #lezanta1{
+
+    text-align: left;
+  }
+
+#epikefalida{
+    index:10;
+    top:120px;
+    left:10px;
+    width:800px;
+    height:62px;
+    border-color:#5f7ba4;
+    border-style:solid;
+    border-width:1px;
+    background-color:#eeeee0;
+    layer-background-color:#eeeee0;
+    text-align: center;
+}
+
+
+
+.col-xs-12
+{
+  text-align: center;
+}
+
+#box {
+  display: inline-block;
+  margin: 10px auto;
+  width: 50em;
+  height: 100%;
+  white-space: nowrap;
+} 
+    
+  @media all and (max-width: 52em) {
+      
+    #box {  
+    width: 100%;
+    }
+    .btn
+    {
+
+      visibility: hidden;
+
+    }
+
+  }
+  
+  
+#center {
+  vertical-align: middle;
+  display: inline-block;
+  white-space: normal;
+outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+  }
+#box:after {
+  content: "";
+  width: 100%;
+  height: 60px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: -10px;
+     /*outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;*/
+  }
+
+table {
+  background-color:#A4CBCF;
+  padding: 1em;
+    border-spacing: 3px;
+    <!--border-style :solid;-->
+    
+     /*outline-width: 1px;
+  outline-style: dashed;
+  outline-color: red;*/
+        }
+    
+  
+ #center#pure-table pure-table-horizontal{
+     width :100%
+ }
+
+    
+.kentriko{
+    
+    border-style: solid;
+    border-color: red;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+    text-align: center;
+
+}
+
+
+    
+.kentriko1{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F3F579;
+     text-align: center;
+}
+.kentriko2{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+     text-align: center;
+
+}
+
+.ph-acid-chlorine{
+   outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F3F579;
+     text-align: center;
+
+}
+
+.average{
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+     text-align: center;
+
+}
+
+     
+.average-ph-acid-chlorine{
+outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F3F579;
+     text-align: center;
+
+  
+}
+
+
+
+
+    .btn {
+      margin-right: 666px;
+      margin-top: 10px; 
+  background: #dedede;
+  background-image: -webkit-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: -moz-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: -ms-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: -o-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: linear-gradient(to bottom, #dedede, #a1a1a1);
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
+  border: solid #949494 1px;
+  text-decoration: none;
+      }
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+#kentriko_section
+{
+
+  max-width: 750px;
+  word-wrap:break-word;
+  text-align: left;
+
+
+}

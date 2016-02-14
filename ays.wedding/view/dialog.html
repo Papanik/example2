@@ -1,0 +1,25 @@
+<script src="js/friend-select.js"></script>
+<script src="js/friends_array.js"></script>
+
+<div class="facebook-friends" id="facebook-popup">
+    <div class="friends-title">Friends</div>
+    <div class="friends-container">
+        <div class="friends-header">
+            <input type="text" class="find form-control" placeholder="Username" aria-describedby="basic-addon1"
+                   value="Search all friends" onfocus="if (this.value==this.defaultValue) this.value = ''"onblur="if (this.value=='') this.value = this.defaultValue"/>
+        </div>
+        <div class="friends">
+            <ul id="friends"></ul>            
+        </div>
+        <div class="friends-bottom">
+        
+            <input type="submit" class="cancel" value="Cancel"/>
+            <button  class="submit" id="button1" >chek </button>
+            
+            <input type="button" class="btn-primary btn-mini" id="check1" value="Check All"/>
+            <input type="button" class="btn-primary btn-mini" id="uncheck1" value="Uncheck All"/>
+            
+            
+        </div>
+    </div>
+</div>

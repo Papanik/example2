@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script> <!--facebook connect -->
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+
+</head>
+<body>
+ <div id="fb-root"></div>
+ <div id="placeholder"></div>
+ 
+   
+
+
+    <script>   $.getJSON('https://graph.facebook.com/eris.risyana/friends?limit=100&access_token=CAAU4YDD7udABAMZA6OvFuLhB0ZCgqDlOe4ZCMGgXbhbXvmODVR8d5Aj2h8qTa8mhys0JvyljQ31ZCZCMSIhZAZBd3k05ipB2BwVnhmQcH3mezboD9EU6uiAgDZAXOm6eW5Nm8n4KCO5jaIOcNqe0x7TqZAGxke9cWgYWChQBD967lJ3t2cwbEY4gpVpjK7KPy4oSvRLC8wyMKWwZDZD', function(mydata) {
+        var output="<ul>";
+        for (var i in mydata.data) {
+            output+="<li>NAMA : " + mydata.data[i].name + "<br/>ID : " + mydata.data[i].id + "</li>";
+        }
+
+        output+="</ul>";
+        document.getElementById("placeholder").innerHTML=output;   });
+
+ window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1469360673372624',
+    cookie     : true,  // enable cookies to allow the server to access 
+    status     : true, // check login status
+    xfbml      : true,  // parse XFBML
+    oauth      : true,
+    version    :'2,5',
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+
+  
+  
+  };
+  // This is called with the results from from FB.getLoginStatus().
+
+(function (doc) {
+  var js;
+  var id = 'facebook-jssdk';
+  var ref = doc.getElementsByTagName('script')[0];
+  if (doc.getElementById(id)) {
+    return;
+  }
+  js = doc.createElement('script');
+  js.id = id;
+  js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  ref.parentNode.insertBefore(js, ref);
+}(document));
+
+
+function getFriends() {
+  FB.api('/me', function(response) {
+    console.log(JSON.stringify(response));
+});
+    FB.api('/me/friends', function(response) {
+        if(response.data) {
+          console.log(response);
+            $.each(response.data,function(index,friend) {
+                alert(friend.name + ' has id:' + friend.id);
+            });
+        } else {
+            alert("Error!");
+        }
+    });
+}
+
+function Login() {
+  FB.login(function (response) {
+    if (response.authResponse) {
+      FB.api('/me/invitable_friends', function (response) {
+        console.log('friends',response);
+        
+        //document.getElementById("displayName").innerHTML = response.name;
+        //document.getElementById("userName").innerHTML = response.username;
+        //document.getElementById("userID").innerHTML = response.id;
+        //document.getElementById("userEmail").innerHTML = response.email;
+        FB.api('/me/picture?type=normal', function (response) {
+           console.log('photo',response);
+          //document.getElementById("profileImage").setAttribute("src", response.data.url);
+        });
+
+      });
+
+     getFriends();
+
+    } else {
+      alert("Login attempt failed!");
+    }
+  }, { scope: 'email,user_photos,publish_actions,user_friends' });
+}
+
+
+
+ FB.Event.subscribe('auth.authResponseChange', function (response) {
+  if (response.status === 'connected') {
+    alert("Successfully connected to Facebook!");
+  }
+  else if (response.status === 'not_authorized') {
+    alert("Login failed!");
+  } else {
+    alert("Unknown error!");
+  }
+})
+</script>
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+<input type="button" value="Login" onclick="Login();" />
+
+</fb:login-button>
+
+<div id="status">
+</div>
+
+</body>
+</html>

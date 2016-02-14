@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Seating Chart</title>
+<meta name="description" content="A seating chart editor for assigning places at tables." />
+<!-- Copyright 1998-2016 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="go1.js"></script>
+<!--link href="goSamples.css" rel="stylesheet" type="text/css" />  <!-- you don't need to use this -->
+<script src="seating.js"></script>
+
+</head>
+<body onload="init()">
+<div id="sample">
+  <div style="width:100%; white-space:nowrap;">
+
+    <span style="display: inline-block; vertical-align: top; padding: 5px; width:100px">
+     <select id="select">
+      <option id="myDiagram.nodeTemplateMap.add" value="-1">Pick a shape</option>
+      <option value="3">Circular</option>
+      <option value="4">Rectangular</option>
+      <option value="5">Top Table</option>
+      <option value="6">Custom Shape</option>
+    </select>
+      <div id="myGuests" style="border: solid 1px black; height: 500px">
+     
+      </div>
+    </span>
+    <span style="display: inline-block; vertical-align: top; padding: 5px; width:80%">
+      <div id="myDiagram" style="border: solid 1px black; height: 500px"></div>
+    </span>
+  </div>
+  
+  <div style="display: inline">  <!--table -->
+    <pre id="savedModel"></pre>
+  </div>
+</div>
+</body>
+</html>

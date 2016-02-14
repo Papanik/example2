@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script type="text/javascript" src="js/jquery.facebook.multifriend.select.js"></script> 
+      <script type="text/javascript" src="js/friends-select.js"></script> 
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    <button id="fb-login">Login</button>
+
+    <div class="dialog"></div>
+
+    <script>
+        window.fbAsyncInit = function() {
+                FB.init({
+                appId      : '457175741133821',
+                status     : true, // check login status
+                cookie     : true, // enable cookies to allow the server to access the session
+                xfbml      : true  // parse XFBML
+            });
+
+                // Additional initialization code here
+                FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    Friends();
+                }
+  
+            });
+
+
+            
+            document.getElementById('fb-login').onclick = function() {
+              FB.login(function(response) {
+                
+                if (response.status === 'connected') {
+                    Friends();
+                } 
+              });
+            };
+
+            };
+
+
+
+/*
+
+             function init() 
+             {
+                FB.api('/me', function(response) {
+                      $("#username").html("<img src='https://graph.facebook.com/" + response.id + "/picture'/><div>" + response.name + "</div>");
+
+
+                    
+                      $("#jfmfs-container").jfmfs({ 
+                          max_selected: 15, 
+                          max_selected_message: "{0} of {1} selected",
+                          friend_fields: "id,name,last_name",
+                          pre_selected_friends: [1014025367],
+                          exclude_friends: [1211122344, 610526078],
+                          sorter: function(a, b) {
+                            var x = a.last_name.toLowerCase();
+                            var y = b.last_name.toLowerCase();
+                            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                          }
+                      });
+                      $("#jfmfs-container").bind("jfmfs.friendload.finished", function() { 
+                          window.console && console.log("finished loading!"); 
+                      });
+                      $("#jfmfs-container").bind("jfmfs.selection.changed", function(e, data) { 
+                          window.console && console.log("changed", data);
+                      });                     
+                      
+                      $("#logged-out-status").hide();
+                      $("#show-friends").show();
+  
+                  });
+
+
+                    }
+
+                         $("#show-friends").live("click", function() {
+                    var friendSelector = $("#jfmfs-container").data('jfmfs');             
+                    $("#selected-friends").html(friendSelector.getSelectedIds().join(', ')); 
+                });    
+*/
+                    
+
+            function Friends() {
+             
+
+ FB.api('/me', function(response) {
+                      $("#username").html("<img src='https://graph.facebook.com/" + response.id + "/picture'/><div>" + response.name + "</div>" );});
+
+                 
+                FB.api('/me/taggable_friends?limit=5000', function(response) {  //****limit=orio stous filous
+                    if(response.data) {
+                        //alert(response.data)
+                        console.log(response);
+                        $('.dialog').load('dialog.html', function() {
+                            var $friends = $('#friends');
+                            // Load all friends
+                            $.each(response.data, function() {
+                                
+                               
+                                var name = this.name.replace(/ /, '<br />');
+                               console.log('ta data sto each',this);
+
+                                //$("#ids").append('<p>'+this.id+'</p><br>')
+                          $friends.append('<li data-id="'+this.id+'" data-name="'+this.name+'"><img src="'+this.picture.data.url+'" > "'+this.name+'"</p><input type="checkbox"></li>');
+                            });
+                        });
+                    } 
+                    /*
+                    $ret = $facebook->api('/me/friends?limit=25');
+                    var_dump($ret);
+                    $next = parse_url($ret['paging']['next']);
+                    $ret = $facebook->api($next['path'] . '?' . $next['query']);
+                    var_dump($ret);
+                    */
+                    else {
+                        alert("Error!");
+                    }
+                });
+            }
+            
+              
+
+
+
+            function process(id) {
+                    alert(id);
+                    $('.facebook-friends').fadeOut(200, function() { $(this).remove(); });
+                }           
+                    
+            // Load the SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+        </script>
+</body>
+<div id="username"></div>
+</html>

@@ -1,0 +1,311 @@
+$green: #27ae60;
+$dark-green: #16a085;
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+
+#logoFas
+{
+	background-image: url('Fasuri.png');
+	background-repeat:no-repeat;
+	background-size: 100%;
+    margin: auto;
+	width: 280px;
+	height: 150px;
+	
+}
+
+html, body {
+  margin: -10px;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  }
+
+body {
+  padding: 5em 1em;
+ text-align: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 20px;
+  }
+  #lezanta{
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: black;
+    text-align: left;
+     width:799px;
+  }
+  #lezanta1{
+
+    text-align: left;
+  }
+  
+
+
+#epikefalida{
+    index:10;
+    top:120px;
+    left:10px;
+    width:800px;
+    height:60px;
+    border-color:#5f7ba4;
+    border-style:solid;
+    border-width:1px;
+    background-color:#eeeee0;
+    layer-background-color:#eeeee0;
+    text-align: center;
+}
+
+
+
+.col-xs-12
+{
+  text-align: center;
+}
+
+#box {
+  display: inline-block;
+
+  margin:  10px auto;
+  width: 50em;
+  height: 100%;
+  white-space: nowrap;
+
+} 
+    
+  @media all and (max-width: 52em) {
+      
+    #box {  
+    width: 100%;
+    margin:0 auto;
+    }
+
+      .btn
+    {
+
+      visibility: hidden;
+
+    }
+  }
+  
+  
+#center {
+  vertical-align: middle;
+  display: inline-block;
+  white-space: normal;
+outline-width: 2px;
+  
+  outline-color: black;
+  }
+#box:after {
+  content: "";
+  width: 100%;
+  height: 60px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: -10px;
+     
+  }
+
+table {
+  background-color:#A4CBCF;
+  
+    border-spacing: 2px;
+    border :solid 1px;
+    
+    
+        }
+    
+  
+ #center#pure-table pure-table-horizontal{
+     width :100%
+
+ }
+
+  #center#pure-table pure-table-horizonta2{
+     width :100%
+ }  
+
+#kentriko{
+    
+    height:62px;
+    border-style: solid;
+    border-color: red;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+    text-align: center;
+
+}
+#kentriko #kentriko_section{
+ height: 25px;
+  }
+
+#kentriko21 #kentriko_type{
+  height: 25px;
+}
+.kentriko5 #kentriko_machine{
+  height: 25px;
+}
+
+.kentriko8 #kentriko_part{
+  height: 25px;
+}
+    
+.kentriko1{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F0E68C;
+     text-align: center;
+}
+.kentriko2{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F3F579;
+     text-align: center;
+
+}
+#kentriko21{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+     text-align: center;
+
+}
+
+.kentriko3{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F0E68C;
+     text-align: center;
+
+}
+
+.kentriko4{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color:  #F3F579;
+     text-align: center;
+
+}
+.kentriko5{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+     text-align: center;
+
+}
+.kentriko6{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color:  #F0E68C;
+     text-align: center;
+
+}
+.kentriko7{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F3F579;
+     text-align: center;
+
+}
+.kentriko8{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+     text-align: center;
+
+}
+.kentriko9{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F0E68C;
+     text-align: center;
+
+}
+
+.kentriko10{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color:  #F3F579;
+     text-align: center;
+
+}
+.kentriko11{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #F3F579;
+     text-align: center;
+
+}
+
+.kentriko12{
+    
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: black;
+    background-color: #C0C0C0;
+     text-align: center;
+
+}
+
+
+
+    .btn {
+      margin-right: 666px;
+      margin-top: 10px; 
+  background: #dedede;
+  background-image: -webkit-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: -moz-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: -ms-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: -o-linear-gradient(top, #dedede, #a1a1a1);
+  background-image: linear-gradient(to bottom, #dedede, #a1a1a1);
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
+  border: solid #949494 1px;
+  text-decoration: none;
+      }
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}

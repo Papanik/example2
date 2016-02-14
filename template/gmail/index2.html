@@ -1,0 +1,41 @@
+<html>
+  <head>
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+<script src="https://apis.google.com/js/client.js"></script>
+
+
+</head>
+
+<script type="text/javascript">
+
+   var scopes =[  'https://mail.google.com/'];
+   function auth() {
+     var config = {
+       'client_id': '276566624751-l7vq27sq8odt4e2rsvqgstb6m7k4adb1.apps.googleusercontent.com',
+       'scope':  scopes
+     };
+     gapi.auth.authorize(config, function() {
+       fetch(gapi.auth.getToken());  
+      
+     });
+   }
+ 
+   function fetch(token) {
+     $.ajax({
+     url: "https://www.google.com/m8/feeds/contacts/default/thin?alt=json&access_token=" + token.access_token + "&max-results=500&v=3.0",
+     dataType: "jsonp",
+     success:function(data) {
+                              // display all your data in console
+               console.log(data);
+     }
+ });
+ } 
+</script>
+  <body>
+<button onclick="auth();">GET CONTACTS FEED</button>
+</body>
+
+</html>

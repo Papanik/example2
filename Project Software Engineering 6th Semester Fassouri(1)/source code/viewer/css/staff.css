@@ -1,0 +1,35 @@
+.container
+{
+	max-width:900px;
+	height: 100%;
+}
+
+.col-xs-12
+{
+	padding-top: 5px;
+	padding-left: 10px;
+	text-align: center;
+}
+
+.col-xs-12 input[type="text"]
+{
+	margin: 5px;
+	float : left;
+}
+
+select
+{
+	margin-bottom: 10px;
+}
+
+#sele_list
+{
+	margin-bottom: 15px;
+}
+#img
+{
+
+	
+	margin-right: 320px;
+	margin-top: 5px;
+}

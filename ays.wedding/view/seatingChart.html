@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Seating Chart</title>
+<meta charset="UTF-8">
+
+
+<meta name="description" content="A seating chart editor for assigning places at tables." />
+<!-- Copyright 1998-2016 by Northwoods Software Corporation. -->
+
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-table.css">
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+
+<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+<script src="js/go1.js"></script>
+<link href="css/goSamples.css" rel="stylesheet" type="text/css" />  <!-- you don't need to use this -->
+<script src="js/seating.js"></script>
+<script src="js/gmail_tabledata.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  guest_list();
+});
+
+
+</script>
+
+
+</head>
+<body onload="init()">
+
+
+
+
+
+
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+
+            <select id="select_table">
+              <option value="0">Pick a shape</option>
+              <option  value="1">Circular</option>
+              <option value="2">Rectangular</option>
+              <option value="3">Top Table</option>
+            </select>
+
+                                  
+            <input type="number"  min="1" max="100" id="replyNumber" data-bind="value:replyNumber" />
+
+              <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+
+<div id="sample">
+  <div style="width:100%; white-space:nowrap;">
+
+    <span style="display: inline-block; vertical-align: top; padding: 5px; width:100px">
+
+  
+      <div id="myGuests" style="border: solid 1px black; height: 500px">
+     
+           </div>
+    </span>
+    <span style="display: inline-block; vertical-align: top; padding: 5px; width:80%">
+      <div id="myDiagram" style="border: solid 1px black; height: 500px"></div>
+    </span>
+  </div>
+  
+  <div style="display: inline">  <!--table -->
+    <pre id="savedModel"></pre>
+  </div>
+</div>
+</body>
+</html>

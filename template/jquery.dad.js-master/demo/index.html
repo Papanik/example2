@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="pt">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+   
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="font/stylesheet.css">
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="../source/jquery.dad.css">
+</head>
+<body>
+
+<div class="container">
+    
+    <div id="daddy2" class="dad">
+        <div>
+            <div>1</div>
+        </div>
+        <div>
+            <div>2</div>
+        </div>
+        <div>
+            <div>3</div>
+        </div>
+        <div>
+            <div>4</div>
+        </div>
+        <div>
+            <div>5</div>
+        </div>
+    </div>
+   
+    
+   
+</div>
+
+<div class="clearfix"></div>
+
+
+<script src="jquery.min.js"></script>
+<script src="../source/jquery.dad.js"></script>
+<script src="jquery.nicescroll.min.js"></script>
+<script>
+    $(function(){
+        $('html').niceScroll({cursorcolor:"#639BF6",cursorwidth :10, cursorborder: 'none'});
+        //dad simple demo
+        $('.dad').dad();
+        //dad dropzone
+        var d=$('.dad2').dad();
+       
+        //dad activate and deactivate
+        
+        
+    })
+</script>
+</body>
+</html>

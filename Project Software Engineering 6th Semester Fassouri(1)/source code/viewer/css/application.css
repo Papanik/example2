@@ -1,0 +1,42 @@
+
+
+#preview
+
+
+{
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width:94px;
+	height: 94px;
+}
+
+.container
+{
+	max-width:600px;
+
+}
+
+#naProf
+{
+	padding-left:40px;
+
+}
+
+@media print {
+   @import url("application.css");
+
+body
+{
+font-family:arial;
+}
+.preview
+{
+width:200px;
+border:solid 1px #dedede;
+padding:10px;
+}
+#preview
+{
+color:#cc0000;
+font-size:12px
+}

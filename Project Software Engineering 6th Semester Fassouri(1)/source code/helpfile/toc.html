@@ -1,0 +1,824 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<title>Fasouri Watermania Waterpark- Table of Contents</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 4.7.1.684">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/silver-theme/jquery-ui-1.8.12.custom.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/dynatree/chm/ui.dynatree.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="css/toc.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#tabs .ui-widget-header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.dynatree.min.js"></script>
+	<script type="text/javascript" src="js/hndjsse.js"></script>
+	<script type="text/javascript">
+	
+		window.bSearchDataLoaded = false;
+		var sHelpIdToActivate = '';
+	
+		$(document).ready(function()
+		{
+			var sAnchorName = '';
+			try { sAnchorName = top.location.href.substring(top.location.href.lastIndexOf("#") + 1, top.location.href.length); }
+			catch(err) { sAnchorName = ''; }
+			var nSelectedTab = 0;
+			if (sAnchorName == '_index') nSelectedTab = 1
+			else if (sAnchorName == '_search') nSelectedTab = 2;			
+			$("#tabs").tabs({
+				selected: nSelectedTab,
+				select: function(event, ui) { HideKwPopup(); }
+			});
+			
+			// Toc
+			if ($("#tab-toc").length) {
+				$("#tab-toc").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onActivate: function(node){
+						if ($("#tab-keywords").length && $("#tab-keywords").dynatree && $("#tab-keywords").dynatree("getTree") && $("#tab-keywords").dynatree("getTree").activateKey)
+							$("#tab-keywords").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+				// Expand all nodes if required
+				$("#tab-toc").dynatree("getRoot").visit(function(node){
+						node.expand(true);
+					});
+				// Select the active help id
+				if (sHelpIdToActivate != '') $("#tab-toc").dynatree("getTree").activateKey(sHelpIdToActivate);
+			}
+			
+			// Keywords
+			
+			if ($("#tab-keywords").length) {
+				$("#tab-keywords").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onClick: function(node, event){
+						HideKwPopup();
+						if (node.data && node.data.click)
+						{
+							var aRefList = null;
+							eval('aRefList=' + node.data.click);
+							if (ShowKwPopup(node.li, aRefList))
+							{
+								if ($("#tab-toc") && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").activateKey)
+									$("#tab-toc").dynatree("getTree").activateKey(null);
+								if(node.data.href && node.data.href != '#'){
+									window.open(node.data.href, node.data.target);
+								}
+							}
+						}
+					}
+				});
+				// Expand all nodes if required
+				$("#tab-keywords").dynatree("getRoot").visit(function(node){
+						node.expand(true);
+					});
+				}
+			
+			// Load search data
+			(function() {
+				var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+				se.src = 'js/hndsd.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+			})();
+		});
+		
+		$('body').click(function() {
+			HideKwPopup();
+		});
+		
+		function SelectTocItem(sHelpId)
+		{
+			if ($("#tab-toc").length && $("#tab-toc").dynatree && $("#tab-toc").dynatree("getTree") && $("#tab-toc").dynatree("getTree").getNodeByKey) {
+				$("#tab-toc").dynatree("getTree").getNodeByKey(sHelpId).activateSilently();
+			}
+			else {
+				sHelpIdToActivate = sHelpId;
+			}
+		}
+		
+		function HideKwPopup()
+		{
+			if($("#popupMenu")) $("#popupMenu").remove();
+		}
+		
+		function ShowKwPopup(oSender, aLinks)
+		{
+			HideKwPopup();
+			if (!aLinks || !aLinks.length || aLinks.length == 0) return false
+			else if (aLinks.length == 1) return true
+			else
+			{
+				var oParentDiv = document.createElement("DIV");
+				oParentDiv.id = "popupMenu";
+				var oLink = null;
+				// Close button
+				oLink = document.createElement("SPAN");
+				oLink.className = "close-button";
+				oLink.innerHTML = "X";
+				oLink.href = "#";
+				oLink.onclick = HideKwPopup;
+				oParentDiv.appendChild(oLink);
+				// Items
+				for (var nCnt=0; nCnt<aLinks.length; nCnt++)
+				{
+					oLink = document.createElement("A");
+					oLink.innerHTML = aLinks[nCnt][0];
+					oLink.href = aLinks[nCnt][1];
+					oLink.target = "FrameMain";
+					oLink.onclick = HideKwPopup;
+					oParentDiv.appendChild(oLink);
+				}
+				document.body.appendChild(oParentDiv);
+				var pos = $(oSender).offset(); 
+				var height = $(oSender).height();
+				$(oParentDiv).css({
+					"left": (pos.left+20) + "px",
+					"top": (pos.top + height + 5) + "px"
+				});
+				$(oParentDiv).show();
+				return false;
+			}
+		}
+		
+		function PerformSearch()
+		{
+			if (!window.bSearchDataLoaded) {
+				$("#search_results").html("Search engine data hasn't been fully loaded yet or an error occurred while loading it. This usually happens when documentation is browsed locally.");
+				return;
+			}
+			sValue = $("#search_value").val();
+			$("#search_results").html('Searching...');
+			var oSearchEngine = new HndJsSe;
+			oSearchEngine.ParseInput(sValue);			
+			oSearchEngine.PerformSearch();
+			if (!oSearchEngine.aResults || !oSearchEngine.aResults.length)
+			{
+				$("#search_results").html('No results found.');
+			}
+			else
+			{
+				$("#search_results").html('<div id="search_results_content"></div>');
+				var oUl = $("#search_results_content").append("<ul id='lr'></ul>").find("ul");
+				for (var nCnt = 0; nCnt < oSearchEngine.aResults.length; nCnt++)
+				{
+					if (oSearchEngine.aResults[nCnt][0] < aTl.length)
+					{
+						oUl.append("<li><a href='" + aTl[oSearchEngine.aResults[nCnt][0]][0] + "?search=" + escape(sValue) + "' target='FrameMain'>" + unescape(aTl[oSearchEngine.aResults[nCnt][0]][1]) + "</a></li>");
+					}
+				}
+				// Tree
+				$("#search_results_content").dynatree({
+					clickFolderMode: 1,
+					debugLevel: 0,
+					imagePath: 'css/dynatree/chm/',
+					onActivate: function(node){
+						if ($("#search_results_content") && $("#search_results_content").dynatree && $("#search_results_content").dynatree("getTree") && $("#search_results_content").dynatree("getTree").activateKey)
+							$("#search_results_content").dynatree("getTree").activateKey(null);
+						if(node.data.href && node.data.href != '#'){
+							window.open(node.data.href, node.data.target);
+						}
+					}
+				});
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tab-toc">Contents</a></li>
+			<li><a href="#tab-keywords">Index</a></li>
+			<li><a href="#tab-search">Search</a></li>
+			</ul>
+		<div id="tab-toc">
+			<ul id="toc" class="">
+
+				<li class="folder" id="LoginScreen" data="">
+							<a
+							href="LoginScreen.html"
+							target="FrameMain">
+								Login Screen</a>
+
+				<ul><li class="" id="Login" data="">
+							<a
+							href="Login.html"
+							target="FrameMain">
+								Login</a>
+
+				</li><li class="" id="ForgotPassword" data="">
+							<a
+							href="ForgotPassword.html"
+							target="FrameMain">
+								Forgot Password</a>
+
+				</li><li class="" id="Questions" data="">
+							<a
+							href="Questions.html"
+							target="FrameMain">
+								Questions</a>
+
+				</li></ul></li><li class="" id="NavigationBar" data="icon: '0.png'">
+							<a
+							href="NavigationBar.html"
+							target="FrameMain">
+								Navigation Bar</a>
+
+				</li><li class="folder" id="MainMenuScreen" data="">
+							<a
+							href="MainMenuScreen.html"
+							target="FrameMain">
+								Main Menu Screen</a>
+
+				<ul><li class="folder" id="StockControl" data="">
+							<a
+							href="StockControl.html"
+							target="FrameMain">
+								Stock Control</a>
+
+				<ul><li class="folder" id="Section" data="">
+							<a
+							href="Section.html"
+							target="FrameMain">
+								Section</a>
+
+				<ul><li class="" id="NewSection" data="">
+							<a
+							href="NewSection.html"
+							target="FrameMain">
+								New Section</a>
+
+				</li><li class="" id="EditSection" data="">
+							<a
+							href="EditSection.html"
+							target="FrameMain">
+								Edit Section</a>
+
+				</li><li class="" id="DeleteSection" data="">
+							<a
+							href="DeleteSection.html"
+							target="FrameMain">
+								Delete Section</a>
+
+				</li><li class="" id="Report" data="">
+							<a
+							href="Report.html"
+							target="FrameMain">
+								Report</a>
+
+				</li></ul></li><li class="folder" id="Item" data="">
+							<a
+							href="Item.html"
+							target="FrameMain">
+								Item</a>
+
+				<ul><li class="" id="InsertItem" data="">
+							<a
+							href="InsertItem.html"
+							target="FrameMain">
+								Insert Item</a>
+
+				</li><li class="" id="EditItem" data="">
+							<a
+							href="EditItem.html"
+							target="FrameMain">
+								Edit Item</a>
+
+				</li><li class="" id="DeleteItem" data="">
+							<a
+							href="DeleteItem.html"
+							target="FrameMain">
+								Delete Item</a>
+
+				</li></ul></li></ul></li><li class="folder" id="StaffManagement" data="">
+							<a
+							href="StaffManagement.html"
+							target="FrameMain">
+								Staff Management</a>
+
+				<ul><li class="folder" id="Section1" data="">
+							<a
+							href="Section1.html"
+							target="FrameMain">
+								Section</a>
+
+				<ul><li class="" id="NewSection1" data="">
+							<a
+							href="NewSection1.html"
+							target="FrameMain">
+								New Section</a>
+
+				</li><li class="" id="EditSection1" data="">
+							<a
+							href="EditSection1.html"
+							target="FrameMain">
+								Edit Section</a>
+
+				</li><li class="" id="DeleteSection1" data="">
+							<a
+							href="DeleteSection1.html"
+							target="FrameMain">
+								Delete Section</a>
+
+				</li><li class="" id="SearchbySection" data="">
+							<a
+							href="SearchbySection.html"
+							target="FrameMain">
+								Search by Section</a>
+
+				</li></ul></li><li class="folder" id="SearchEmployee" data="">
+							<a
+							href="SearchEmployee.html"
+							target="FrameMain">
+								Search Employee</a>
+
+				<ul><li class="" id="Search" data="">
+							<a
+							href="Search.html"
+							target="FrameMain">
+								Search</a>
+
+				</li><li class="" id="EditStaff" data="">
+							<a
+							href="EditStaff.html"
+							target="FrameMain">
+								Edit Staff</a>
+
+				</li><li class="" id="Access" data="">
+							<a
+							href="Access.html"
+							target="FrameMain">
+								Access</a>
+
+				</li><li class="" id="Delete" data="">
+							<a
+							href="Delete.html"
+							target="FrameMain">
+								Delete</a>
+
+				</li></ul></li></ul></li><li class="folder" id="Employees" data="">
+							<a
+							href="Employees.html"
+							target="FrameMain">
+								Employees</a>
+
+				<ul><li class="folder" id="SearchEmployee1" data="">
+							<a
+							href="SearchEmployee1.html"
+							target="FrameMain">
+								Search Employee</a>
+
+				<ul><li class="" id="Search1" data="">
+							<a
+							href="Search1.html"
+							target="FrameMain">
+								Search</a>
+
+				</li></ul></li><li class="folder" id="Tools" data="">
+							<a
+							href="Tools.html"
+							target="FrameMain">
+								Tools</a>
+
+				<ul><li class="" id="NewEmployee" data="">
+							<a
+							href="NewEmployee.html"
+							target="FrameMain">
+								New Employee</a>
+
+				</li><li class="" id="EditEmployee" data="">
+							<a
+							href="EditEmployee.html"
+							target="FrameMain">
+								Edit Employee</a>
+
+				</li><li class="" id="ArchiveEmployee" data="">
+							<a
+							href="ArchiveEmployee.html"
+							target="FrameMain">
+								Archive Employee</a>
+
+				</li><li class="" id="Report1" data="">
+							<a
+							href="Report1.html"
+							target="FrameMain">
+								Report</a>
+
+				</li></ul></li></ul></li><li class="folder" id="Technical" data="">
+							<a
+							href="Technical.html"
+							target="FrameMain">
+								Technical</a>
+
+				<ul><li class="folder" id="Pools1" data="">
+							<a
+							href="Pools1.html"
+							target="FrameMain">
+								Pools</a>
+
+				<ul><li class="folder" id="Pools" data="">
+							<a
+							href="Pools.html"
+							target="FrameMain">
+								Pools</a>
+
+				<ul><li class="" id="NewPool" data="">
+							<a
+							href="NewPool.html"
+							target="FrameMain">
+								New  Pool</a>
+
+				</li><li class="" id="EditPool" data="">
+							<a
+							href="EditPool.html"
+							target="FrameMain">
+								Edit  Pool</a>
+
+				</li><li class="" id="DeletePool" data="">
+							<a
+							href="DeletePool.html"
+							target="FrameMain">
+								Delete Pool</a>
+
+				</li></ul></li><li class="folder" id="Details" data="">
+							<a
+							href="Details.html"
+							target="FrameMain">
+								Details</a>
+
+				<ul><li class="" id="PoolChemicals" data="">
+							<a
+							href="PoolChemicals.html"
+							target="FrameMain">
+								Pool Chemicals</a>
+
+				</li></ul></li><li class="" id="Report2" data="">
+							<a
+							href="Report2.html"
+							target="FrameMain">
+								Report</a>
+
+				</li></ul></li><li class="folder" id="Machinery" data="">
+							<a
+							href="Machinery.html"
+							target="FrameMain">
+								Machinery</a>
+
+				<ul><li class="folder" id="Area" data="">
+							<a
+							href="Area.html"
+							target="FrameMain">
+								Area</a>
+
+				<ul><li class="folder" id="Section2" data="">
+							<a
+							href="Section2.html"
+							target="FrameMain">
+								Section</a>
+
+				<ul><li class="" id="NewSection2" data="">
+							<a
+							href="NewSection2.html"
+							target="FrameMain">
+								New Section</a>
+
+				</li><li class="" id="EditSection2" data="">
+							<a
+							href="EditSection2.html"
+							target="FrameMain">
+								Edit Section</a>
+
+				</li><li class="" id="DeleteSection2" data="">
+							<a
+							href="DeleteSection2.html"
+							target="FrameMain">
+								Delete Section</a>
+
+				</li></ul></li><li class="folder" id="TypePoolGame" data="">
+							<a
+							href="TypePoolGame.html"
+							target="FrameMain">
+								Type (Pool/Game)</a>
+
+				<ul><li class="" id="NewPoolGame" data="">
+							<a
+							href="NewPoolGame.html"
+							target="FrameMain">
+								New Pool/Game</a>
+
+				</li><li class="" id="EditPoolGame" data="">
+							<a
+							href="EditPoolGame.html"
+							target="FrameMain">
+								Edit Pool/Game</a>
+
+				</li><li class="" id="DeletePoolGame" data="">
+							<a
+							href="DeletePoolGame.html"
+							target="FrameMain">
+								Delete Pool/Game</a>
+
+				</li></ul></li><li class="folder" id="MachinePumpTurbine" data="">
+							<a
+							href="MachinePumpTurbine.html"
+							target="FrameMain">
+								Machine (Pump/Turbine)</a>
+
+				<ul><li class="" id="NewPumpTurbine" data="">
+							<a
+							href="NewPumpTurbine.html"
+							target="FrameMain">
+								New Pump/Turbine</a>
+
+				</li><li class="" id="EditPumpTurbine" data="">
+							<a
+							href="EditPumpTurbine.html"
+							target="FrameMain">
+								Edit Pump/Turbine</a>
+
+				</li><li class="" id="DeletePumpTourbine" data="">
+							<a
+							href="DeletePumpTourbine.html"
+							target="FrameMain">
+								Delete Pump/Tourbine</a>
+
+				</li></ul></li></ul></li><li class="" id="PartsList" data="">
+							<a
+							href="PartsList.html"
+							target="FrameMain">
+								Parts List</a>
+
+				</li><li class="folder" id="PartsTools" data="">
+							<a
+							href="PartsTools.html"
+							target="FrameMain">
+								Parts Tools</a>
+
+				<ul><li class="" id="NewPart" data="">
+							<a
+							href="NewPart.html"
+							target="FrameMain">
+								New Part</a>
+
+				</li><li class="" id="EditPart" data="">
+							<a
+							href="EditPart.html"
+							target="FrameMain">
+								Edit Part</a>
+
+				</li><li class="" id="DeletePart" data="">
+							<a
+							href="DeletePart.html"
+							target="FrameMain">
+								Delete Part</a>
+
+				</li><li class="" id="Report3" data="">
+							<a
+							href="Report3.html"
+							target="FrameMain">
+								Report</a>
+
+				</li></ul></li></ul></li><li class="folder" id="Maintenance" data="">
+							<a
+							href="Maintenance.html"
+							target="FrameMain">
+								Maintenance</a>
+
+				<ul><li class="folder" id="Pool" data="">
+							<a
+							href="Pool.html"
+							target="FrameMain">
+								Pool</a>
+
+				<ul><li class="" id="poolcheck" data="">
+							<a
+							href="poolcheck.html"
+							target="FrameMain">
+								pool check</a>
+
+				</li></ul></li><li class="folder" id="Games" data="">
+							<a
+							href="Games.html"
+							target="FrameMain">
+								Games </a>
+
+				<ul><li class="" id="Gamecheck" data="">
+							<a
+							href="Gamecheck.html"
+							target="FrameMain">
+								Game check</a>
+
+				</li></ul></li><li class="folder" id="Generator" data="">
+							<a
+							href="Generator.html"
+							target="FrameMain">
+								Generator</a>
+
+				<ul><li class="" id="NewGenerator" data="">
+							<a
+							href="NewGenerator.html"
+							target="FrameMain">
+								New Generator</a>
+
+				</li><li class="" id="EditGenerator" data="">
+							<a
+							href="EditGenerator.html"
+							target="FrameMain">
+								Edit Generator</a>
+
+				</li><li class="" id="DeleteGenerator" data="">
+							<a
+							href="DeleteGenerator.html"
+							target="FrameMain">
+								Delete Generator</a>
+
+				</li><li class="" id="CheckGenerator" data="">
+							<a
+							href="CheckGenerator.html"
+							target="FrameMain">
+								Check Generator</a>
+
+				</li></ul></li><li class="folder" id="TasksList" data="">
+							<a
+							href="TasksList.html"
+							target="FrameMain">
+								Tasks List</a>
+
+				<ul><li class="" id="NewTask" data="">
+							<a
+							href="NewTask.html"
+							target="FrameMain">
+								New Task</a>
+
+				</li><li class="" id="EditTask" data="">
+							<a
+							href="EditTask.html"
+							target="FrameMain">
+								Edit Task</a>
+
+				</li><li class="" id="DeleteTask" data="">
+							<a
+							href="DeleteTask.html"
+							target="FrameMain">
+								Delete Task</a>
+
+				</li><li class="" id="Report5" data="">
+							<a
+							href="Report5.html"
+							target="FrameMain">
+								Report</a>
+
+				</li></ul></li></ul></li></ul></li><li class="folder" id="Incident" data="">
+							<a
+							href="Incident.html"
+							target="FrameMain">
+								Incident</a>
+
+				<ul><li class="folder" id="Section3" data="">
+							<a
+							href="Section3.html"
+							target="FrameMain">
+								Section</a>
+
+				<ul><li class="" id="NewSection3" data="">
+							<a
+							href="NewSection3.html"
+							target="FrameMain">
+								New Section</a>
+
+				</li><li class="" id="EditSectionPending" data="">
+							<a
+							href="EditSectionPending.html"
+							target="FrameMain">
+								Edit Section-Pending</a>
+
+				</li><li class="" id="DeleteSection3" data="">
+							<a
+							href="DeleteSection3.html"
+							target="FrameMain">
+								Delete Section</a>
+
+				</li></ul></li><li class="" id="Search2" data="">
+							<a
+							href="Search2.html"
+							target="FrameMain">
+								Search</a>
+
+				</li><li class="" id="DateRange" data="">
+							<a
+							href="DateRange.html"
+							target="FrameMain">
+								Date Range</a>
+
+				</li><li class="folder" id="Tools1" data="">
+							<a
+							href="Tools1.html"
+							target="FrameMain">
+								Tools</a>
+
+				<ul><li class="" id="NewIncident" data="">
+							<a
+							href="NewIncident.html"
+							target="FrameMain">
+								New Incident</a>
+
+				</li><li class="" id="EditIncident" data="">
+							<a
+							href="EditIncident.html"
+							target="FrameMain">
+								Edit Incident</a>
+
+				</li><li class="" id="DeleteIncident" data="">
+							<a
+							href="DeleteIncident.html"
+							target="FrameMain">
+								Delete Incident</a>
+
+				</li><li class="" id="Report4" data="">
+							<a
+							href="Report4.html"
+							target="FrameMain">
+								Report</a>
+
+				</li></ul></li></ul></li><li class="" id="Settings" data="icon: '0.png'">
+							<a
+							href="Settings.html"
+							target="FrameMain">
+								Settings</a>
+
+				</li></ul></li><li class="folder" id="PopupMessages" data="">
+							<a
+							href="PopupMessages.html"
+							target="FrameMain">
+								Pop up Messages</a>
+
+				<ul><li class="" id="GoogleChrome" data="">
+							<a
+							href="GoogleChrome.html"
+							target="FrameMain">
+								Google Chrome</a>
+
+				</li><li class="" id="MozillaFirefox" data="">
+							<a
+							href="MozillaFirefox.html"
+							target="FrameMain">
+								Mozilla Firefox</a>
+
+				</li></ul></li><li class="" id="Footer" data="icon: '0.png'">
+							<a
+							href="Footer.html"
+							target="FrameMain">
+								Footer</a>
+
+				</li><li class="" id="Manual" data="icon: '0.png'">
+							<a
+							href="Manual.html"
+							target="FrameMain">
+								Manual</a>
+
+				</li></ul>
+		</div>
+		
+		<div id="tab-keywords">
+			<ul id="keywords">
+
+				</ul>
+		</div>
+		
+		<div id="tab-search">
+			<form onsubmit="PerformSearch(); return false;">
+				<label for="search_value">Search:</label>
+				<input id="search_value" name="search_value"></input>
+				<input type="submit" value="Search"/>
+			</form>
+			<div id="search_results"></div>
+		</div>
+		
+		</div>
+    
+</body>
+
+</html>
+
